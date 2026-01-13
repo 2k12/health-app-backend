@@ -16,7 +16,12 @@ import exerciseRoutes from "./routes/exercise.routes";
 const app = express();
 
 // Middleware
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: "health-app-web-production.up.railway.app", // O '*' para probar
+  })
+);
 // app.options("*", cors()); // Removed to fix PathError: Missing parameter name at index 1: *
 app.use(helmet());
 app.use(morgan("dev"));
