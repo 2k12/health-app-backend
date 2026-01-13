@@ -17,9 +17,16 @@ const app = express();
 
 // Middleware
 app.use(cors());
+app.options("*", cors()); // Enable pre-flight for all routes
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
+
+// Debug Middleware to log all requests
+app.use((req, res, next) => {
+  console.log(`[Request] ${req.method} ${req.path}`);
+  next();
+});
 
 // Rate Limiting
 const limiter = rateLimit({
