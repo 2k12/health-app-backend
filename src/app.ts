@@ -17,7 +17,7 @@ const app = express();
 
 // Middleware
 app.use(cors());
-app.options("*", cors()); // Enable pre-flight for all routes
+// app.options("*", cors()); // Removed to fix PathError: Missing parameter name at index 1: *
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
