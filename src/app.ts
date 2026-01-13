@@ -17,11 +17,13 @@ const app = express();
 
 // Middleware
 // app.use(cors());
-app.use(
-  cors({
-    origin: "health-app-web-production.up.railway.app", // O '*' para probar
-  })
-);
+// app.use(
+//   cors({
+//     origin: "health-app-web-production.up.railway.app", // O '*' para probar
+//   })
+// );
+// Ejemplo en Node/Express
+app.use(cors({ origin: process.env.CORS_ORIGIN }));
 // app.options("*", cors()); // Removed to fix PathError: Missing parameter name at index 1: *
 app.use(helmet());
 app.use(morgan("dev"));
